@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CIFP Pau Casesnoves",
+  "type": "object",
+  "properties": {
+    "cifp": {
+      "type": "object",
+      "properties": {
+        "alumne": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/alumne" }
+        },
+        "professor": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/professor" }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "definitions": {
+    "dadesComunes": {
+      "type": "object",
+      "required": ["id", "nom", "llinatges"],
+      "properties": {
+        "id": { "type": "integer" },
+        "nom": { "type": "string" },
+        "llinatges": { "type": "string" },
+        "data_naixement": { "type": "string" },
+        "correu": { "type": "string", "format": "email" },
+        "telefon": { "type": "string" },
+        "adreça": { "type": "string" }
+      }
+    },
+    "cursEnum": {
+      "type": "string",
+      "enum": ["DAM", "DAW", "ASIX", "SMX", "SEIA", "ER", "AUT"]
+    },
+    "alumne": {
+      "allOf": [
+        { "$ref": "#/definitions/dadesComunes" },
+        {
+          "type": "object",
+          "required": ["data_matricula", "curs"],
+          "properties": {
+            "data_matricula": { "type": "string" },
+            "curs": { "$ref": "#/definitions/cursEnum" }
+          }
+        }
+      ]
+    },
+    "professor": {
+      "allOf": [
+        { "$ref": "#/definitions/dadesComunes" },
+        {
+          "type": "object",
+          "required": ["data_incorporació", "departament"],
+          "properties": {
+            "data_incorporació": { "type": "string" },
+            "departament": {
+              "type": "string",
+              "enum": ["Informàtica", "Electricitat", "Automoció"]
+            },
+            "assignatura": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["id_assignatura", "nom_assignatura", "cicle"],
+                "properties": {
+                  "id_assignatura": { "type": "integer" },
+                  "nom_assignatura": { "type": "string" },
+                  "cicle": { "$ref": "#/definitions/cursEnum" },
+                  "data_inici": { "type": "string" },
+                  "data_final": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
