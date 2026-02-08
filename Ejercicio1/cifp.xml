@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE cifp SYSTEM "cifp.dtd">
+
+<cifp>
+    <alumne id="1">
+        <nom>Mateo</nom>
+        <llinatges>Crespí Luque</llinatges>
+        <data_naixement>1996-09-21</data_naixement>
+        <correu>mateocrespi@paucasesnovescifp.cat</correu>
+        <data_matricula>2025-08-25</data_matricula>
+        <curs>DAW</curs>
+    </alumne>
+
+    <professor id="1000">
+        <nom>Walter</nom>
+        <llinatges>White</llinatges>
+        <data_incorporació>1985-08-10</data_incorporació>
+        <departament>Electricitat</departament>
+        <assignatura id_assignatura="40">
+            <nom_assignatura cicle="DAW">Química</nom_assignatura>
+            <data_inici>2025-08-25</data_inici>
+        </assignatura>
+    </professor>
+</cifp>
